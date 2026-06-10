@@ -1,1 +1,72 @@
-/* Caso queira utilizar framework como Bootstrap para estilização, pode utilizar. Basta ignoar esse arquivo */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(235, 235, 235);
+    text-align: center;
+}
+
+.cabecalho {
+    background-color: rgb(80, 163, 112);
+    color: white;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+main {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.cadastro {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(194, 194, 194, 0.301);
+}
+
+.cadastro h2 {
+    margin-bottom: 1rem;
+}
+
+#form-cadastro {
+    padding: 5px;
+}
+
+#form-cadastro input {
+    border-radius: 4px;
+    background-color: rgb(235, 235, 235);
+    border: none;
+    padding: 4px;
+}
+
+.campo-nome {
+    margin-bottom: 8px;
+}
+
+#btn-cadastrar {
+    margin-top: 1.5rem;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(25, 180, 64, 0.897);
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
+#btn-cadastrar:hover {
+    transform: scale(1.05);
+    background-color: rgba(12, 145, 45, 0.897);
+    transition: all 0.3s ease;
+}
+
+#lista-materiais th {
+    text-align: center;
+}
