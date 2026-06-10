@@ -23,3 +23,36 @@ async function carregarMateriais() {
         console.error("Erro ao carregar materiais", erro);
     }
 }
+
+// post
+form.addEventListener("submit", async (evento) => {
+    event.preventDefault();
+
+    const nome = document.getElementById("input-nome").value;
+    const quantidade = document.getElementById("input-quantidade").value;
+
+    const novoMaterial = {
+        nome: nome,
+        quantidade: Number(quantidade)
+    };
+
+    try {
+        const resposta = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(novoMaterial)
+        });
+
+        if (resposta.ok) {
+            form.reset();
+            carregarMateriais();
+        }
+
+    } catch(erro) {
+        console.error("Erro ao cadastrar material", erro);
+    }
+});
+
+carregarMateriais();
