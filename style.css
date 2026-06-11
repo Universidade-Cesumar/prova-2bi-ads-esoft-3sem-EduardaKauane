@@ -56,17 +56,37 @@ main {
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background-color: rgba(25, 180, 64, 0.897);
+    background-color: rgba(23, 168, 59, 0.897);
     cursor: pointer;
     color: rgb(255, 255, 255);
 }
 
 #btn-cadastrar:hover {
     transform: scale(1.05);
-    background-color: rgba(12, 145, 45, 0.897);
+    background-color: rgba(9, 133, 40, 0.897);
     transition: all 0.3s ease;
 }
 
-#lista-materiais th {
+.secao-lista {
     text-align: center;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    border-color: rgb(0, 255, 170);
+    box-shadow: 0 2px 5px rgba(194, 194, 194, 0.301);
+    padding: 12px;
+}
+
+table {
+    width: 100%;
+    margin-top: 18px;
+}
+
+table th {
+    background-color: rgb(80, 163, 112);
+    border-radius: 8px;
+    padding: 4px;
+    color: white;
+    
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
