@@ -58,4 +58,20 @@ form.addEventListener("submit", async (evento) => {
     }
 });
 
+// put e delete
+corpoTabela.addEventListener("click", async (evento) => {
+    const linha = evento.target.closest("tr");
+    if (!linha) return;
+
+    const id = linha.dataset.id;
+
+    if (evento.target.classList.contains("btn-baixar")) {
+        await baixarEstoque(id, linha);
+    }
+
+    if (evento.target.classList.contains("btn-excluir")) {
+        await excluirMaterial(id);
+    }
+});
+
 carregarMateriais();
