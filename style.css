@@ -90,3 +90,23 @@ table th {
     
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/* botões de ação */
+
+.btn-baixar {
+    background-color: rgba(146, 146, 146, 0.897);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-excluir {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

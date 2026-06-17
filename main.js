@@ -16,6 +16,9 @@ async function carregarMateriais() {
             linha.innerHTML = `
                 <td>${material.nome}</td>
                 <td>${material.quantidade}</td>
+                <td><button class="btn-baixar" data-id="${material.id}">Editar</button>
+                <button class="btn-excluir" data-id="${material.id}"><img src="https://cdn-icons-png.flaticon.com/128/7718/7718788.png" loading="lazy" alt="excluir " title="excluir " width="24" height="24"></button>
+                </td>
             `;
             corpoTabela.appendChild(linha);
         });
