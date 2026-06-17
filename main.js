@@ -3,6 +3,22 @@ const API_URL = "https://6a29b36df59cb8f65f1d81b3.mockapi.io/Material";
 const form = document.getElementById("form-cadastro");
 const corpoTabela = document.getElementById("corpo-tabela");
 
+function validarRetirada(estoqueAtual, quantidadeRetirada) {
+    if (typeof estoqueAtual !== "number" || typeof quantidadeRetirada !== "number") {
+        return false;
+    }
+    if (isNaN(estoqueAtual) || isNaN(quantidadeRetirada)) {
+        return false;
+    }
+    if (quantidadeRetirada <= 0) {
+        return false;
+    }
+    if (quantidadeRetirada > estoqueAtual) {
+        return false;
+    }
+    return true;
+}
+
 // get
 async function carregarMateriais() {
     try {
@@ -12,19 +28,32 @@ async function carregarMateriais() {
         corpoTabela.innerHTML = "";
 
         materiais.forEach((material) => {
-            const linha = document.createElement("tr");
-            linha.innerHTML = `
-                <td>${material.nome}</td>
-                <td>${material.quantidade}</td>
-                <td><button class="btn-baixar" data-id="${material.id}">Editar</button>
-                <button class="btn-excluir" data-id="${material.id}"><img src="https://cdn-icons-png.flaticon.com/128/7718/7718788.png" loading="lazy" alt="excluir " title="excluir " width="24" height="24"></button>
-                </td>
-            `;
+            const linha = criarLinhaMaterial(material);
             corpoTabela.appendChild(linha);
         });
-    } catch(erro) {
-        console.error("Erro ao carregar materiais", erro);
+    } catch (erro) {
+        console.error("Erro ao carregar materiais:", erro);
     }
+}
+
+// criando a linha (<tr>) da tabela para um material, com input de retirada e botões de ação
+function criarLinhaMaterial(material) {
+    const linha = document.createElement("tr");
+    linha.dataset.id = material.id;
+
+    linha.innerHTML = `
+        <td>${material.nome}</td>
+        <td class="coluna-quantidade">${material.quantidade}</td>
+        <td>
+            <input type="number" class="input-retirada" id="input-retirada" min="1" placeholder="Qtd. a retirar">
+        </td>
+        <td class="coluna-acoes">
+            <button class="btn-baixar" type="button">Retira quantidade</button>
+            <button class="btn-excluir" type="button"><img src="https://cdn-icons-png.flaticon.com/128/7718/7718788.png" loading="lazy" alt="excluir " title="excluir " width="24" height="24"></button>
+        </td>
+    `;
+
+    return linha;
 }
 
 // post
