@@ -74,4 +74,36 @@ corpoTabela.addEventListener("click", async (evento) => {
     }
 });
 
+// put
+async function baixarEstoque(id, linha) {
+    const inputRetirada = linha.querySelector(".input-retirada");
+    const quantidadeRetirada = Number(inputRetirada.value);
+    const estoqueAtual = Number(linha.querySelector(".coluna-quantidade").textContent);
+
+    if (!validarRetirada(estoqueAtual, quantidadeRetirada)) {
+        alert("Inválido. Verifique a quantidade informada (não pode ser negativa, zero, ou maior que o estoque atual).");
+        return;
+    }
+
+    const novaQuantidade = estoqueAtual - quantidadeRetirada;
+
+    try {
+        const resposta = await fetch(`${API_URL}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ quantidade: novaQuantidade })
+        });
+
+        if (resposta.ok) {
+            carregarMateriais();
+        }
+    } catch (erro) {
+        console.error("Erro ao realizar baixa de estoque", erro);
+    }
+}
+
+// delete
+
 carregarMateriais();
