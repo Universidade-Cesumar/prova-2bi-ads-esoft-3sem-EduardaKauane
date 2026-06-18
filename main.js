@@ -94,11 +94,11 @@ corpoTabela.addEventListener("click", async (evento) => {
 
     const id = linha.dataset.id;
 
-    if (evento.target.classList.contains("btn-baixar")) {
+    if (evento.target.closest(".btn-baixar")) {
         await baixarEstoque(id, linha);
     }
 
-    if (evento.target.classList.contains("btn-excluir")) {
+    if (evento.target.closest(".btn-excluir")) {
         await excluirMaterial(id);
     }
 });
