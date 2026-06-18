@@ -87,7 +87,6 @@ table th {
     border-radius: 8px;
     padding: 4px;
     color: white;
-    
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -116,4 +115,14 @@ table th {
     border: none;
     border-radius: 4px;
     padding: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+/* footer */
+footer {
+    background-color: rgb(80, 163, 112);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
