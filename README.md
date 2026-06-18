@@ -18,23 +18,27 @@ Aplicação web (Front-end + API) que permite cadastrar e listar os materiais do
 
 ---
 
-## Sprint 1 - Base do Sistema
-
-**Objetivo:** Construir a base do sistema de controle de almoxarifado: interface inicial, formulário de cadastro e tabela de listagem, consumindo a MockAPI.
-
-### Funcionalidades implementadas
-
-- Formulário de cadastro de materiais (nome e quantidade)
-- Envio dos dados via **POST** para a MockAPI ao clicar em "Cadastrar"
-- Listagem de materiais via **GET**, carregada e exibida dinamicamente ao abrir a página
-- Tabela atualizada automaticamente após cada novo cadastro
-
-### Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - **HTML5** - Estrutura da aplicação
 - **CSS3** - Estilização e layout
 - **JavaScript (ES6+)** - Lógica e requisições assíncronas (`fetch`, `async/await`)
 - **MockAPI.io** - Simulação de back-end / API RESTful
+
+---
+
+## Como configurar e rodar
+
+1. Crie um projeto em [https://mockapi.io/](https://mockapi.io/)
+2. Crie um recurso (resource) chamado `Material` com os seguintes campos:
+   - `name` (string)
+   - `quantidade` (number)
+3. Copie a URL gerada do recurso (ex: `https://xxxxxxxx.mockapi.io/materiais`)
+4. No arquivo `script.js`, substitua o valor da constante `API_URL` pela URL copiada:
+   ```javascript
+   const API_URL = "https://xxxxxxxx.mockapi.io/materiais";
+   ```
+5. Abra o arquivo `index.html` no navegador e comece a usar.
 
 ---
 
