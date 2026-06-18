@@ -49,7 +49,7 @@ function criarLinhaMaterial(material) {
         </td>
         <td class="coluna-acoes">
             <button class="btn-baixar" type="button">Retira quantidade</button>
-            <button class="btn-excluir" type="button"><img src="https://cdn-icons-png.flaticon.com/128/7718/7718788.png" loading="lazy" alt="excluir " title="excluir " width="24" height="24"></button>
+            <button class="btn-excluir" type="button"><img src="https://cdn-icons-png.flaticon.com/128/7718/7718788.png" loading="lazy" alt="excluir " title="Excluir item" width="24" height="24"></button>
         </td>
     `;
 
