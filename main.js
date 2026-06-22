@@ -2,6 +2,10 @@ const API_URL = "https://6a29b36df59cb8f65f1d81b3.mockapi.io/Material";
 
 const form = document.getElementById("form-cadastro");
 const corpoTabela = document.getElementById("corpo-tabela");
+const inputBusca = document.getElementById("input-busca");
+const totalItens = document.getElementById("total-itens");
+
+let todosMateriais = [];
 
 function validarRetirada(estoqueAtual, quantidadeRetirada) {
     if (typeof estoqueAtual !== "number" || typeof quantidadeRetirada !== "number") {
@@ -40,6 +44,11 @@ async function carregarMateriais() {
 function criarLinhaMaterial(material) {
     const linha = document.createElement("tr");
     linha.dataset.id = material.id;
+
+    // se o total de materiais for menor que 10, recebe estoque crítico
+    if (material.quantidade < 10) {
+        linha.classList.add("estoque-critico");
+    }
 
     linha.innerHTML = `
         <td>${material.nome}</td>
