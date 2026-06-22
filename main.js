@@ -29,12 +29,19 @@ async function carregarMateriais() {
         const resposta = await fetch(API_URL);
         const materiais = await resposta.json();
 
+        todosMateriais = materiais;
         corpoTabela.innerHTML = "";
 
         materiais.forEach((material) => {
             const linha = criarLinhaMaterial(material);
             corpoTabela.appendChild(linha);
         });
+
+        // atualiza contadores do dashboard
+        document.getElementById("total-itens").textContent = materiais.length;
+        const criticos = materiais.filter(m => m.quantidade < 10).length;
+        document.getElementById("total-criticos").textContent = criticos;
+
     } catch (erro) {
         console.error("Erro ao carregar materiais:", erro);
     }
@@ -67,29 +74,46 @@ function criarLinhaMaterial(material) {
 
 // post
 form.addEventListener("submit", async (evento) => {
-    event.preventDefault();
+    evento.preventDefault();
 
-    const nome = document.getElementById("input-nome").value;
-    const quantidade = document.getElementById("input-quantidade").value;
+    const nome = document.getElementById("input-nome").value.trim();
+    const quantidade = Number(document.getElementById("input-quantidade").value);
 
-    const novoMaterial = {
-        nome: nome,
-        quantidade: Number(quantidade)
-    };
+    if(!nome) {
+        alert("Digite o nome do material.");
+        return;
+    }
+
+    // verifica se existe algum material com o mesmo nome
+    const materialExistente = todosMateriais.find((m) => m.nome.toLowerCase() === nome.toLowerCase());
 
     try {
-        const resposta = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(novoMaterial)
-        });
+        if (materialExistente) {
+            const novaQuantidade = materialExistente.quantidade + quantidade;
 
-        if (resposta.ok) {
-            form.reset();
-            carregarMateriais();
+            const resposta = await fetch(`${API_URL}/${materialExistente.id}`, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({quantidade: novaQuantidade})
+            });
+
+            if (!resposta.ok) {
+                throw new Error(`Erro ao atualizar material`);
+            }
+        } else {
+            const resposta = await fetch(API_URL, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({nome, quantidade})
+            });
+
+            if (!resposta.ok) {
+                throw new Error(`Erro ao cadastrar material`);
+            }
         }
+
+        form.reset();
+        await carregarMateriais();
 
     } catch(erro) {
         console.error("Erro ao cadastrar material", erro);
@@ -135,7 +159,7 @@ async function baixarEstoque(id, linha) {
         });
 
         if (resposta.ok) {
-            carregarMateriais();
+            await carregarMateriais();
         }
     } catch (erro) {
         console.error("Erro ao realizar baixa de estoque", erro);
@@ -153,7 +177,7 @@ async function excluirMaterial(id) {
         });
 
         if (resposta.ok) {
-            carregarMateriais();
+            await carregarMateriais();
         }
     } catch (erro) {
         console.error("Erro ao excluir material", erro);
