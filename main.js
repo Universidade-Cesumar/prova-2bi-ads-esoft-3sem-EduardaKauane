@@ -72,6 +72,22 @@ function criarLinhaMaterial(material) {
     return linha;
 }
 
+function renderizarTabela(materiais) {
+    corpoTabela.innerHTML = "";
+
+    materiais.forEach((material) => {
+        const linha = criarLinhaMaterial(material);
+        corpoTabela.appendChild(linha);
+    });
+
+    // atualiza ambos os contadores
+    totalItens.textContent = materiais.length;
+
+    const totalCriticosEl = document.getElementById("total-criticos");
+    const criticos = materiais.filter(m => m.quantidade < 10).length;
+    totalCriticosEl.textContent = criticos;
+}
+
 // post
 form.addEventListener("submit", async (evento) => {
     evento.preventDefault();
