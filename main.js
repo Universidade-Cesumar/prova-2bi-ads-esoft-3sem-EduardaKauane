@@ -101,6 +101,8 @@ function filtrarMateriais() {
     renderizarTabela(materiaisFiltrados);
 }
 
+inputBusca.addEventListener("input", filtrarMateriais);
+
 // post
 form.addEventListener("submit", async (evento) => {
     evento.preventDefault();
