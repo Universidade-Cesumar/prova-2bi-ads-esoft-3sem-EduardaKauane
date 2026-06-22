@@ -30,6 +30,8 @@ async function carregarMateriais() {
         const materiais = await resposta.json();
 
         todosMateriais = materiais;
+        filtrarMateriais();
+
         corpoTabela.innerHTML = "";
 
         materiais.forEach((material) => {
@@ -86,6 +88,17 @@ function renderizarTabela(materiais) {
     const totalCriticosEl = document.getElementById("total-criticos");
     const criticos = materiais.filter(m => m.quantidade < 10).length;
     totalCriticosEl.textContent = criticos;
+}
+
+// filtro de busca
+function filtrarMateriais() {
+    const termo = inputBusca.value.toLowerCase().trim();
+
+    const materiaisFiltrados = todosMateriais.filter((material) =>
+        material.nome.toLowerCase().includes(termo)
+    );
+
+    renderizarTabela(materiaisFiltrados);
 }
 
 // post
