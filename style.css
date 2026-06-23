@@ -10,6 +10,10 @@ body {
     text-align: center;
 }
 
+body h2 {
+    color: rgb(0, 48, 18);
+}
+
 .cabecalho {
     background-color: rgb(80, 163, 112);
     color: white;
@@ -63,6 +67,61 @@ main {
  
 #total-criticos {
     color: #dc2626;
+}
+
+/* input de busca */
+.secao-busca {
+    margin-bottom: 1.5rem;
+}
+
+#input-busca {
+    width: 100%;
+    padding: 0.7rem 3rem 0.7rem 1rem; /* espaço à direita para o botão */
+    font-size: 1rem;
+    border: 1.5px solid #4b916a;
+    border-radius: 25px; /* deixa arredondado */
+    background-color: #f0fff7;
+    color: #333;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#input-busca::placeholder {
+    color: #4b916a;
+}
+
+#input-busca:focus {
+    border-color: #70e083;
+}
+
+.busca-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.btn-buscar {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #3f946c;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-buscar:hover {
+    background-color: #3eaa78;
+}
+
+.btn-buscar img {
+    filter: brightness(0) invert(1);
 }
 
 /* cadastro de material */
