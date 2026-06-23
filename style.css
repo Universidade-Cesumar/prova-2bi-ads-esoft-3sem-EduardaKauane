@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -15,13 +16,13 @@ body {
     padding: 1rem;
     justify-content: center;
     align-items: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 main {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin: 2rem auto;
     padding: 0 1rem;
+    max-width: 700px;
 }
 
 /* dashboard */
@@ -37,6 +38,14 @@ main {
     display: flex;
     align-items: center;
     min-width: 150px;
+}
+
+.card-dashboard, .card-alerta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
     flex: 1;
 }
  
@@ -49,10 +58,10 @@ main {
 #total-itens, #total-criticos {
     font-size: 2rem;
     font-weight: bold;
-    color: #2c7a7b;
+    color: #2c7b56;
 }
  
-.card-alerta, #total-criticos {
+#total-criticos {
     color: #dc2626;
 }
 
@@ -107,48 +116,126 @@ main {
     border-radius: 10px;
     border-color: rgb(0, 255, 170);
     box-shadow: 0 2px 5px rgba(194, 194, 194, 0.301);
+    overflow: hidden;
     padding: 12px;
 }
 
 table {
     width: 100%;
     margin-top: 18px;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
+
+table th:nth-child(1) { width: 38%; }  /* nome */
+table th:nth-child(2) { width: 14%; }  /* quantidade */
+table th:nth-child(3) { width: 26%; }  /* retirada */
+table th:nth-child(4) { width: 22%; }  /* ações */
 
 table th {
     background-color: rgb(80, 163, 112);
-    border-radius: 8px;
-    padding: 4px;
+    padding: 10px 12px;
     color: white;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+table td {
+    padding: 9px 12px;
+    border-bottom: 0.5px solid #e5e5e5;
+    font-size: 13px;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+    text-align: center;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+    text-align: center;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:hover td {
+    background-color: #f9f9f9;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+    text-align: center;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:hover td {
+    background-color: #f9f9f9;
+}
+
+table tbody tr {
+    border-left: 2px solid rgba(143, 209, 168, 0.726);
+}
+
+.estoque-critico {
+    border-left: 2px solid #e25e5eb7;
+}
+
+.estoque-critico td:nth-child(2) {
+    color: #c0392b;
+    font-weight: bold;
 }
 
 /* botões de ação */
-
-.btn-baixar {
-    background-color: rgba(146, 146, 146, 0.897);
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-excluir {
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 10px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.coluna-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .input-retirada {
-    background-color: rgb(238, 238, 238);
+    width: 8rem;
+    padding: 4px 6px;
+    border: 0.5px solid #ccc;
+    border-radius: 6px;
+    background-color: #f4f4f4;
+    font-size: 12px;
+}
+
+.btn-baixar {
+    background-color: rgb(80, 163, 112);
     border: none;
-    border-radius: 4px;
-    padding: 5px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.btn-baixar:hover {
+    background-color: rgb(55, 130, 85);
+}
+
+.btn-excluir {
+    background-color: #fdecea;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* footer */
@@ -157,7 +244,6 @@ footer {
     color: white;
     text-align: center;
     padding: 14px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 footer p {
