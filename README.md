@@ -1,5 +1,7 @@
 # Controle de Almoxarifado SENAC - Zona Norte
 
+- Link do site rodando:  https://universidade-cesumar.github.io/prova-2bi-ads-esoft-3sem-EduardaKauane/
+
 Aplicação web para controle de estoque de materiais de saúde, desenvolvida para modernizar a rotina do almoxarifado do curso técnico de Enfermagem.
 
 ---
