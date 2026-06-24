@@ -1,58 +1,66 @@
-# Sistema de Controle de Almoxarifado - SENAC Zona Norte
+# Controle de Almoxarifado SENAC - Zona Norte
 
-## Sobre o Projeto
-
-Aplicação web para modernizar o controle de estoque de materiais de saúde do almoxarifado utilizado nas aulas práticas do curso técnico de Enfermagem.
-
-### O problema
-
-O controle atual é feito por meio de planilha (Excel), o que gera dificuldades como:
-- Falta de contabilização automática de entradas e saídas
-- Necessidade de anotações em papel antes de lançar na planilha
-- Falta de clareza sobre o que há disponível em estoque
-- Dificuldade no controle das baixas diárias de materiais
-
-### A solução
-
-Aplicação web (Front-end + API) que permite cadastrar e listar os materiais do almoxarifado de forma simples e em tempo real, consumindo uma API RESTful via [MockAPI.io](https://mockapi.io/).
+Aplicação web para controle de estoque de materiais de saúde, desenvolvida para modernizar a rotina do almoxarifado do curso técnico de Enfermagem.
 
 ---
 
-## Tecnologias utilizadas
+## O problema
 
-- **HTML5** - Estrutura da aplicação
-- **CSS3** - Estilização e layout
-- **JavaScript (ES6+)** - Lógica e requisições assíncronas (`fetch`, `async/await`)
-- **MockAPI.io** - Simulação de back-end / API RESTful
+O controle era feito em planilha Excel, com anotações em papel e sem contabilização automática de entradas e saídas — gerando falta de clareza sobre o estoque disponível e dificuldade nas baixas diárias.
+
+## A solução
+
+Sistema web com front-end conectado a uma API RESTful via [MockAPI.io](https://mockapi.io/) que permite cadastrar, listar, manipular e excluir materiais em tempo real, com busca por nome.
 
 ---
 
-## Como configurar e rodar
+## Funcionalidades
 
-1. Crie um projeto em [https://mockapi.io/](https://mockapi.io/)
-2. Crie um recurso (resource) chamado `Material` com os seguintes campos:
+- Cadastro de materiais
+- Listagem em tempo real
+- Baixa de estoque com validação de quantidade
+- Exclusão de itens
+- Busca por nome com filtro local
+- Dashboard com total de itens
+- Destaque para itens com estoque crítico
+
+---
+
+## Tecnologias
+
+| Camada | Tecnologia |
+|---|---|
+| Estrutura | **HTML5** |
+| Estilo | **CSS3** |
+| Lógica | **JavaScript** |
+| API | [MockAPI.io](https://mockapi.io/) |
+
+---
+
+## Como rodar
+
+1. Crie um projeto em [MockAPI.io](https://mockapi.io/)
+2. Crie um resource chamado `Material` com os seguintes campos:
    - `name` (string)
    - `quantidade` (number)
-3. Copie a URL gerada do recurso (ex: `https://xxxxxxxx.mockapi.io/materiais`)
-4. No arquivo `script.js`, substitua o valor da constante `API_URL` pela URL copiada:
-   ```javascript
-   const API_URL = "https://xxxxxxxx.mockapi.io/materiais";
+3. Copie a URL gerada (ex: `https://xxxxxxxx.mockapi.io/Material`)
+4. No arquivo `main.js`, substitua o valor de `API_URL`:
+   ```js
+   const API_URL = "https://xxxxxxxx.mockapi.io/Material";
    ```
-5. Abra o arquivo `index.html` no navegador e comece a usar.
+5. Abra o `index.html` no navegador e comece a usar.
 
 ---
 
-## 🗂️ Estrutura de Arquivos
+## Estrutura de arquivos
 
 ```
-├── index.html      # Estrutura da página
-├── style.css       # Estilização da aplicação
-├── script.js       # Lógica de integração com a API
-└── README.md       # Documentação do projeto
+├── index.html   # Estrutura da página
+├── style.css    # Estilização
+├── main.js      # Lógica e integração com a API
+└── README.md    # Documentação
 ```
 
 ---
 
-## Contexto de Uso
-
-Projeto desenvolvido com base no levantamento de requisitos junto à responsável pelo almoxarifado (Camila), enfermeira do curso técnico de Enfermagem do SENAC Zona Norte.
+Desenvolvido por [Eduarda Kauane](https://linkedin.com/in/eduardakauane) — SENAC Zona Norte
